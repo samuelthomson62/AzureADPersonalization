@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AzureADPersonalization.Models.Pages
 {
     [ContentType(DisplayName = "Home Page", GUID = "775ec2b3-5b3f-4d16-9913-8ccf126c64da")]
-    public class HomePage : PageData
+    public class HomePage : SitePageData
     {
         [Display(
             Name = "Title",
@@ -21,7 +21,7 @@ namespace AzureADPersonalization.Models.Pages
             Name = "Hero Banner",
             GroupName = SystemTabNames.Content,
             Order = 2)]
-        public virtual HeroBanner Banner { get; set; }
+        public virtual HeroBannerBlock Banner { get; set; }
 
         [Display(
             Name = "Content",

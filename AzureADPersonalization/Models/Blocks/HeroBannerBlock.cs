@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AzureADPersonalization.Models.Blocks
 {
     [ContentType(DisplayName = "HeroBanner", GUID = "86bc1892-1a81-476f-87ee-12d1c1dd3e85", Description = "")]
-    public class HeroBanner : BlockData
+    public class HeroBannerBlock : BlockData
     {
         [Display(
             Name = "Description",
