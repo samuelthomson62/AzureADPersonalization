@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Web;
 
 using Owin;
-using Microsoft.Owin;
 using Microsoft.Owin.Extensions;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -14,6 +13,9 @@ using Microsoft.Owin.Security.OpenIdConnect;
 
 using EPiServer.Security;
 using EPiServer.ServiceLocation;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 public class Startup
 {
@@ -39,7 +41,7 @@ public class Startup
             ClientId = clientId,
             Authority = commonAuthority,
             PostLogoutRedirectUri = postLogoutRedirectUri,
-            TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters
+            TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = false,
                 RoleClaimType = ClaimTypes.Role
@@ -94,7 +96,7 @@ public class Startup
 
 
     private void HandleMultiSitereturnUrl(
-            RedirectToIdentityProviderNotification<Microsoft.IdentityModel.Protocols.OpenIdConnectMessage,
+            RedirectToIdentityProviderNotification<OpenIdConnectMessage,
                                     OpenIdConnectAuthenticationOptions> context)
     {
         // here you change the context.ProtocolMessage.RedirectUri to corresponding siteurl
